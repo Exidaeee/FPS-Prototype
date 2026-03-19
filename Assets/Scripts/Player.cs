@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
     }
     public void Shoot()
     {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, transform.rotation * Quaternion.Euler(90, 0, 0));
         Rigidbody rbButlet = bullet.GetComponent<Rigidbody>();
         rbButlet.linearVelocity = firePoint.forward * bulletForce; 
         Destroy(bullet, 3f);
