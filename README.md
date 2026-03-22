@@ -15,7 +15,7 @@ The player can move, look around with the mouse, jump, and shoot projectiles.
 * Shooting system (projectile-based)
 * Rigidbody-based physics
 
-## 🛠 Tech
+##  Tech
 
 * Unity (3D)
 * C#
