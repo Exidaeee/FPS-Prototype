@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         Vector3 moveInput = Vector3.zero;
+        Vector3 movment;
 
         if (Keyboard.current.wKey.isPressed)
         {
@@ -54,8 +55,14 @@ public class Player : MonoBehaviour
         {
             moveInput.x = 1f;
         }
+        moveInput = moveInput.normalized;
 
-        Vector3 movment = moveInput * speed * Time.fixedDeltaTime;
+        if (Keyboard.current.leftShiftKey.isPressed)
+        {
+            movment = transform.TransformDirection(moveInput) * 2 * speed * Time.fixedDeltaTime;
+        }
+        else  movment = transform.TransformDirection(moveInput) * speed * Time.fixedDeltaTime;
+        
         rb.MovePosition(rb.position + movment);
 
     }
@@ -65,5 +72,11 @@ public class Player : MonoBehaviour
         Rigidbody rbButlet = bullet.GetComponent<Rigidbody>();
         rbButlet.linearVelocity = firePoint.forward * bulletForce; 
         Destroy(bullet, 3f);
-    }    
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Enemy")) FindFirstObjectByType<GameManager>().GameOver();   
+    }
+
 }
