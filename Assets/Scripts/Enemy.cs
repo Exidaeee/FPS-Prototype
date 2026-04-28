@@ -22,13 +22,11 @@ public class Enemy : MonoBehaviour
         navMesh.SetDestination(target.position);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void ReactToHit()
     {
-        if (collision.collider.CompareTag("Bullet"))
-        {
-            gameManager.enemyList.Remove(gameObject);
-            Destroy(gameObject);
-            gameManager.EnemyCreater();
-        } 
+        gameManager.enemyList.Remove(gameObject);
+        Destroy(gameObject);
+        gameManager.EnemyCreater();
+
     }
 }

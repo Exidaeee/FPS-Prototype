@@ -27,10 +27,10 @@ public class Player : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
         }
 
-        if(Mouse.current.leftButton.wasPressedThisFrame)
-        {
-            Shoot();
-        }
+        //if(Mouse.current.leftButton.wasPressedThisFrame)
+        //{
+        //    Shoot();
+        //}
         
     }
 
@@ -66,17 +66,17 @@ public class Player : MonoBehaviour
         rb.MovePosition(rb.position + movment);
 
     }
-    public void Shoot()
-    {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, transform.rotation * Quaternion.Euler(90, 0, 0));
-        Rigidbody rbButlet = bullet.GetComponent<Rigidbody>();
-        rbButlet.linearVelocity = firePoint.forward * bulletForce; 
-        Destroy(bullet, 3f);
-    }
+    //public void Shoot()
+    //{
+    //    GameObject bullet = Instantiate(bulletPrefab, firePoint.position, transform.rotation * Quaternion.Euler(90, 0, 0));
+    //    Rigidbody rbButlet = bullet.GetComponent<Rigidbody>();
+    //    rbButlet.linearVelocity = firePoint.forward * bulletForce; 
+    //    Destroy(bullet, 3f);
+    //}
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.CompareTag("Enemy")) FindFirstObjectByType<GameManager>().GameOver();   
-    }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.collider.CompareTag("Enemy")) FindFirstObjectByType<GameManager>().GameOver();   
+    //}
 
 }
