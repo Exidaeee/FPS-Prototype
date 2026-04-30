@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject enemyPrefab;
     public Transform player;
-    private int enemyCounter = 10;
+    private int enemyCounter = 3;
     public List<GameObject> enemyList;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

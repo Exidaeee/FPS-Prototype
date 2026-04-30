@@ -23,7 +23,7 @@ ExportedObj/
 *.svd
 *.pdb
 .vsconfig
-
+.vs/
 # Unity meta files (ВАЖНО оставить!)
 !*.meta
 

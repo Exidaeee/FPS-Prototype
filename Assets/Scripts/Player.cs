@@ -5,6 +5,7 @@ public class Player : MonoBehaviour
 {
     public float speed = 1f;
     public float jumpForce = 3f;
+    private int health = 5;
 
     public GameObject bulletPrefab;
     public Transform firePoint;
@@ -27,11 +28,6 @@ public class Player : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
         }
 
-        //if(Mouse.current.leftButton.wasPressedThisFrame)
-        //{
-        //    Shoot();
-        //}
-        
     }
 
     private void FixedUpdate()
@@ -42,13 +38,13 @@ public class Player : MonoBehaviour
         if (Keyboard.current.wKey.isPressed)
         {
             moveInput.z = 1f;
-        } 
-        if(Keyboard.current.sKey.isPressed)  
+        }
+        if (Keyboard.current.sKey.isPressed)
         {
             moveInput.z = -1f;
         }
         if (Keyboard.current.aKey.isPressed)
-        { 
+        {
             moveInput.x = -1f;
         }
         if (Keyboard.current.dKey.isPressed)
@@ -61,22 +57,14 @@ public class Player : MonoBehaviour
         {
             movment = transform.TransformDirection(moveInput) * 2 * speed * Time.fixedDeltaTime;
         }
-        else  movment = transform.TransformDirection(moveInput) * speed * Time.fixedDeltaTime;
-        
+        else movment = transform.TransformDirection(moveInput) * speed * Time.fixedDeltaTime;
+
         rb.MovePosition(rb.position + movment);
-
     }
-    //public void Shoot()
-    //{
-    //    GameObject bullet = Instantiate(bulletPrefab, firePoint.position, transform.rotation * Quaternion.Euler(90, 0, 0));
-    //    Rigidbody rbButlet = bullet.GetComponent<Rigidbody>();
-    //    rbButlet.linearVelocity = firePoint.forward * bulletForce; 
-    //    Destroy(bullet, 3f);
-    //}
 
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision.collider.CompareTag("Enemy")) FindFirstObjectByType<GameManager>().GameOver();   
-    //}
-
+    public void Hurt(int damage)
+    {
+        health -= damage;
+        Debug.Log("Health: " + health);
+    }
 }

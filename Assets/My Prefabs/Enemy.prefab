@@ -151,3 +151,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   target: {fileID: 0}
+  bulletPtrfab: {fileID: 3279419397652826237, guid: 9d4d88ae9fb027246b280871046e200a, type: 3}
